@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Food calorie management</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-primary">
+        <div class="container text-center justify-content-center">
+            <h3 class=" text-white">Tracalorie</h3>
+            <a id="clear-all" href="#" class="btn btn-info text-white">CLEAR ALL</a>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <div class="container shadow py-5 px-3 mt-5">
+                <div class="row">
+                    <h3 class="col">Add Meal / Food Item</h3>
+                </div>
+                <form action="#" class="row g-4">
+                    <div class="col-6">
+                        <label for="item-name" class="form-label">Meal</label>
+                        <input type="email" class="form-control" id="item-name" placeholder="Add Item">
+                    </div>
+                    <div class="col-6">
+                        <label for="item-calories" class="form-label">Calories</label>
+                        <input type="password" class="form-control" id="item-calories" placeholder="Add Calories">
+                    </div>
+                    <div class="col-6"><a href="#" class="btn add-btn text-white"><i class="bi bi-plus-lg me-2"></i>Add Meal</a></div>
+                    <div class="col-6 text-end"><a href="#" class="btn back-btn text-white"><i class="bi bi-arrow-left-circle-fill me-2"></i>Back</a></div>
+                </form>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1 class="total-result py-5">Total Calories : <span class="total-calories">0</span></h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/Rubik-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Rubik-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Rubik-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Rubik-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Rubik-Regular.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+
+/* utility */
+
+body {
+    font-family: 'Rubik';
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+}
+
+.add-btn {
+    background-color: #1565C0;
+}
+
+.back-btn {
+    background-color: #9E9E9E;
+}
+
+.form-control {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ced4da;
+    padding: 0.375rem 0;
+}
+
+.form-control::placeholder {
+    color: #D2D1D3;
+}
+
+.btn:focus,
+.btn {
+    box-shadow: none;
+    border: none;
+}
+
+
+/* style */
+
+#clear-all {
+    position: absolute;
+    right: 0;
+}
+
+.total-result {
+    border-bottom: 1px solid #9E9E9E;
+}
