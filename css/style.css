@@ -59,6 +59,12 @@ body {
     right: 0;
 }
 
+@media only screen and (max-width: 575px) {
+    #clear-all {
+        position: relative;
+    }
+}
+
 .total-result {
     border-bottom: 1px solid #9E9E9E;
 }
