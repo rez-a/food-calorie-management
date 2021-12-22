@@ -41,6 +41,14 @@ const ItemCtrl = (function() {
             const newItem = new Item(ID, name, calories);
             data.items.push(newItem);
             return newItem;
+        },
+        getTotalCalories: function() {
+            let total = 0;
+            data.items.forEach(item => {
+                total += item.calories;
+            })
+            data.totalCalories = total;
+            return data.totalCalories;
         }
     }
 
@@ -52,7 +60,8 @@ const UICtrl = (function() {
         itemList: '#item-list',
         addBtn: '.add-btn',
         itemNameInput: '#item-name',
-        itemCaloriesInput: '#item-calories'
+        itemCaloriesInput: '#item-calories',
+        totalCalories: '.total-calories'
     }
 
     return {
@@ -92,6 +101,9 @@ const UICtrl = (function() {
             `;
             document.querySelector(UISelector.itemList).insertAdjacentElement('beforeend', li);
         },
+        showTotalCalories: function(totalCalories) {
+            document.querySelector(UISelector.totalCalories).textContent = totalCalories;
+        },
         clearInput: function() {
             document.querySelector(UISelector.itemNameInput).value = '';
             document.querySelector(UISelector.itemCaloriesInput).value = '';
@@ -120,6 +132,9 @@ const App = (function(ItemCtrl, UICtrl) {
         if (Input.name.trim() !== '' && Input.calories.trim() !== '') {
             const newItem = ItemCtrl.addItem(Input.name, Input.calories);
             UICtrl.addListItem(newItem);
+
+            const totalCalories = ItemCtrl.getTotalCalories();
+            UICtrl.showTotalCalories(totalCalories);
             UICtrl.clearInput();
         }
         e.preventDefault();
@@ -135,6 +150,9 @@ const App = (function(ItemCtrl, UICtrl) {
             } else {
                 UICtrl.populateItemList(items);
             }
+
+            const totalCalories = ItemCtrl.getTotalCalories();
+            UICtrl.showTotalCalories(totalCalories);
 
             loadEventListeners();
         }
