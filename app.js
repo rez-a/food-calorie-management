@@ -69,6 +69,14 @@ const ItemCtrl = (function() {
             })
             return found;
         },
+        deleteItem: function(id) {
+            const ids = data.items.map(item => { return item.id });
+            const index = ids.indexOf(id);
+            data.items.splice(index, 1);
+        },
+        clearAllItems: function() {
+            data.items = [];
+        },
         getTotalCalories: function() {
             let total = 0;
             data.items.forEach(item => {
@@ -92,7 +100,8 @@ const UICtrl = (function() {
         updateBtn: '.update-btn',
         deleteBtn: '.delete-btn',
         backBtn: '.back-btn',
-        item: '.list-group-item'
+        item: '.list-group-item',
+        clearBtn: '#clear-all'
     }
 
     return {
@@ -174,6 +183,16 @@ const UICtrl = (function() {
                 }
             })
         },
+        deleteListItem: function(id) {
+            const itemID = `item-${id}`;
+            const item = document.querySelector(`#${itemID}`)
+            item.remove();
+        },
+        removeItems: function() {
+            let listItems = document.querySelectorAll(UISelector.item);
+            listItems = Array.from(listItems);
+            listItems.forEach(item => { item.remove() })
+        },
         hideList: function() {
             document.querySelector(UISelector.itemList).style.display = 'none';
         },
@@ -192,6 +211,9 @@ const App = (function(ItemCtrl, UICtrl) {
         document.querySelector(UISelector.addBtn).addEventListener('click', itemAddSubmit);
         document.querySelector(UISelector.itemList).addEventListener('click', itemEditClick);
         document.querySelector(UISelector.updateBtn).addEventListener('click', itemUpdateSubmit);
+        document.querySelector(UISelector.deleteBtn).addEventListener('click', itemDeleteSubmit);
+        document.querySelector(UISelector.backBtn).addEventListener('click', UICtrl.clearEditState);
+        document.querySelector(UISelector.clearBtn).addEventListener('click', clearAllItems)
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter' || e.code === 'Enter') {
                 e.preventDefault();
@@ -235,6 +257,23 @@ const App = (function(ItemCtrl, UICtrl) {
         UICtrl.clearEditState();
 
         e.preventDefault()
+    }
+
+    const itemDeleteSubmit = function(e) {
+        const currentItem = ItemCtrl.getCurrentItem();
+        ItemCtrl.deleteItem(currentItem.id);
+        UICtrl.deleteListItem(currentItem.id);
+        const totalCalories = ItemCtrl.getTotalCalories();
+        UICtrl.showTotalCalories(totalCalories);
+        UICtrl.clearEditState();
+        e.preventDefault()
+    }
+
+    const clearAllItems = function() {
+        ItemCtrl.clearAllItems();
+        const totalCalories = ItemCtrl.getTotalCalories();
+        UICtrl.showTotalCalories(totalCalories);
+        UICtrl.removeItems();
     }
 
 
